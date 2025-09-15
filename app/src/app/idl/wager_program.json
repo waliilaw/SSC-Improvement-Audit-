@@ -1,0 +1,1457 @@
+{
+  "address": "8PRQvPo16yG8EP5fESDEuJunZBLJ3UFBGvN6CKLZGBUQ",
+  "metadata": {
+    "name": "wager_program",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "create_game_session",
+      "discriminator": [
+        130,
+        34,
+        251,
+        80,
+        77,
+        159,
+        113,
+        224
+      ],
+      "accounts": [
+        {
+          "name": "game_server",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "game_session",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101,
+                  95,
+                  115,
+                  101,
+                  115,
+                  115,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "vault"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "mint",
+          "writable": true,
+          "address": "BzeqmCjLZvMLSTrge9qZnyV8N2zNKBwAxQcZH2XEzFXG"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "session_id",
+          "type": "string"
+        },
+        {
+          "name": "bet_amount",
+          "type": "u64"
+        },
+        {
+          "name": "game_mode",
+          "type": {
+            "defined": {
+              "name": "GameMode"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "distribute_winnings",
+      "discriminator": [
+        208,
+        254,
+        127,
+        148,
+        78,
+        104,
+        249,
+        250
+      ],
+      "accounts": [
+        {
+          "name": "game_server",
+          "docs": [
+            "The game server authority that created the session"
+          ],
+          "signer": true
+        },
+        {
+          "name": "game_session",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101,
+                  95,
+                  115,
+                  101,
+                  115,
+                  115,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "vault"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "const",
+                "value": [
+                  163,
+                  89,
+                  195,
+                  20,
+                  36,
+                  68,
+                  115,
+                  155,
+                  147,
+                  107,
+                  39,
+                  204,
+                  7,
+                  172,
+                  237,
+                  155,
+                  208,
+                  225,
+                  90,
+                  198,
+                  138,
+                  212,
+                  176,
+                  112,
+                  94,
+                  199,
+                  189,
+                  52,
+                  211,
+                  144,
+                  68,
+                  139
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "session_id",
+          "type": "string"
+        },
+        {
+          "name": "winning_team",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "join_user",
+      "discriminator": [
+        34,
+        15,
+        119,
+        81,
+        119,
+        149,
+        25,
+        240
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "game_server"
+        },
+        {
+          "name": "game_session",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101,
+                  95,
+                  115,
+                  101,
+                  115,
+                  115,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "vault"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "mint",
+          "writable": true,
+          "address": "BzeqmCjLZvMLSTrge9qZnyV8N2zNKBwAxQcZH2XEzFXG"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "session_id",
+          "type": "string"
+        },
+        {
+          "name": "team",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "pay_to_spawn",
+      "discriminator": [
+        55,
+        158,
+        177,
+        30,
+        46,
+        243,
+        227,
+        129
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "game_server"
+        },
+        {
+          "name": "game_session",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101,
+                  95,
+                  115,
+                  101,
+                  115,
+                  115,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "_session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "_session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "vault"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "const",
+                "value": [
+                  163,
+                  89,
+                  195,
+                  20,
+                  36,
+                  68,
+                  115,
+                  155,
+                  147,
+                  107,
+                  39,
+                  204,
+                  7,
+                  172,
+                  237,
+                  155,
+                  208,
+                  225,
+                  90,
+                  198,
+                  138,
+                  212,
+                  176,
+                  112,
+                  94,
+                  199,
+                  189,
+                  52,
+                  211,
+                  144,
+                  68,
+                  139
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "session_id",
+          "type": "string"
+        },
+        {
+          "name": "team",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "record_kill",
+      "discriminator": [
+        199,
+        67,
+        232,
+        200,
+        144,
+        122,
+        230,
+        56
+      ],
+      "accounts": [
+        {
+          "name": "game_session",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101,
+                  95,
+                  115,
+                  101,
+                  115,
+                  115,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "_session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "game_server",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "session_id",
+          "type": "string"
+        },
+        {
+          "name": "killer_team",
+          "type": "u8"
+        },
+        {
+          "name": "killer",
+          "type": "pubkey"
+        },
+        {
+          "name": "victim_team",
+          "type": "u8"
+        },
+        {
+          "name": "victim",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "refund_wager",
+      "discriminator": [
+        208,
+        62,
+        96,
+        78,
+        126,
+        46,
+        251,
+        157
+      ],
+      "accounts": [
+        {
+          "name": "game_server",
+          "docs": [
+            "The game server authority that created the session"
+          ],
+          "signer": true
+        },
+        {
+          "name": "game_session",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101,
+                  95,
+                  115,
+                  101,
+                  115,
+                  115,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "session_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "vault"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "const",
+                "value": [
+                  163,
+                  89,
+                  195,
+                  20,
+                  36,
+                  68,
+                  115,
+                  155,
+                  147,
+                  107,
+                  39,
+                  204,
+                  7,
+                  172,
+                  237,
+                  155,
+                  208,
+                  225,
+                  90,
+                  198,
+                  138,
+                  212,
+                  176,
+                  112,
+                  94,
+                  199,
+                  189,
+                  52,
+                  211,
+                  144,
+                  68,
+                  139
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "session_id",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GameSession",
+      "discriminator": [
+        150,
+        116,
+        20,
+        197,
+        205,
+        121,
+        220,
+        240
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidGameState",
+      "msg": "Game session is not in the correct state"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidTeamSelection",
+      "msg": "Invalid team selection. Team must be 0 or 1"
+    },
+    {
+      "code": 6002,
+      "name": "TeamIsFull",
+      "msg": "Team is already full"
+    },
+    {
+      "code": 6003,
+      "name": "InsufficientFunds",
+      "msg": "Insufficient funds to join the game"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidPlayerCount",
+      "msg": "Invalid number of players for this game mode"
+    },
+    {
+      "code": 6005,
+      "name": "NotAllPlayersJoined",
+      "msg": "All players not joined"
+    },
+    {
+      "code": 6006,
+      "name": "GameNotCompleted",
+      "msg": "Game is not in completed state"
+    },
+    {
+      "code": 6007,
+      "name": "UnauthorizedDistribution",
+      "msg": "Only the game authority can distribute winnings"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidWinningTeam",
+      "msg": "Invalid winning team selection"
+    },
+    {
+      "code": 6009,
+      "name": "TotalPotCalculationError",
+      "msg": "Failed to calculate total pot due to arithmetic overflow"
+    },
+    {
+      "code": 6010,
+      "name": "NoWinnersFound",
+      "msg": "No winners found in the winning team"
+    },
+    {
+      "code": 6011,
+      "name": "WinningsCalculationError",
+      "msg": "Failed to calculate per-player winnings"
+    },
+    {
+      "code": 6012,
+      "name": "IncompleteDistribution",
+      "msg": "Failed to distribute all funds from game session"
+    },
+    {
+      "code": 6013,
+      "name": "InvalidTeam",
+      "msg": "Invalid team"
+    },
+    {
+      "code": 6014,
+      "name": "PlayerAccountNotFound",
+      "msg": "Player account not found in winners"
+    },
+    {
+      "code": 6015,
+      "name": "InvalidWinner",
+      "msg": "Invalid winning team selection"
+    },
+    {
+      "code": 6016,
+      "name": "ArithmeticError",
+      "msg": "Arithmetic error"
+    },
+    {
+      "code": 6017,
+      "name": "InvalidMint",
+      "msg": "Invalid mint address provided"
+    },
+    {
+      "code": 6018,
+      "name": "InvalidRemainingAccounts",
+      "msg": "Invalid remaining accounts provided"
+    },
+    {
+      "code": 6019,
+      "name": "InvalidWinnerTokenAccount",
+      "msg": "Invalid winner token account owner"
+    },
+    {
+      "code": 6020,
+      "name": "InvalidTokenMint",
+      "msg": "Invalid token mint"
+    },
+    {
+      "code": 6021,
+      "name": "InvalidSpawns",
+      "msg": "Invalid spawns"
+    },
+    {
+      "code": 6022,
+      "name": "UnauthorizedKill",
+      "msg": "Unauthorized kill"
+    },
+    {
+      "code": 6023,
+      "name": "UnauthorizedPayToSpawn",
+      "msg": "Unauthorized pay to spawn"
+    },
+    {
+      "code": 6024,
+      "name": "PlayerNotFound",
+      "msg": "Player not found"
+    },
+    {
+      "code": 6025,
+      "name": "InvalidPlayerTokenAccount",
+      "msg": "Invalid player token account"
+    },
+    {
+      "code": 6026,
+      "name": "InvalidPlayer",
+      "msg": "Invalid player"
+    },
+    {
+      "code": 6027,
+      "name": "PlayerHasNoSpawns",
+      "msg": "Player has no spawns"
+    },
+    {
+      "code": 6028,
+      "name": "GameNotInProgress",
+      "msg": "Game is not in progress"
+    }
+  ],
+  "types": [
+    {
+      "name": "GameMode",
+      "docs": [
+        "Game mode defining the team sizes"
+      ],
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "WinnerTakesAllOneVsOne"
+          },
+          {
+            "name": "WinnerTakesAllThreeVsThree"
+          },
+          {
+            "name": "WinnerTakesAllFiveVsFive"
+          },
+          {
+            "name": "PayToSpawnOneVsOne"
+          },
+          {
+            "name": "PayToSpawnThreeVsThree"
+          },
+          {
+            "name": "PayToSpawnFiveVsFive"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GameSession",
+      "docs": [
+        "Represents a game session between teams with its own pool"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "session_id",
+            "type": "string"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "session_bet",
+            "type": "u64"
+          },
+          {
+            "name": "game_mode",
+            "type": {
+              "defined": {
+                "name": "GameMode"
+              }
+            }
+          },
+          {
+            "name": "team_a",
+            "type": {
+              "defined": {
+                "name": "Team"
+              }
+            }
+          },
+          {
+            "name": "team_b",
+            "type": {
+              "defined": {
+                "name": "Team"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": {
+                "name": "GameStatus"
+              }
+            }
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "vault_bump",
+            "type": "u8"
+          },
+          {
+            "name": "vault_token_bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GameStatus",
+      "docs": [
+        "Status of a game session"
+      ],
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "WaitingForPlayers"
+          },
+          {
+            "name": "InProgress"
+          },
+          {
+            "name": "Completed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Team",
+      "docs": [
+        "Represents a team in the game"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "players",
+            "type": {
+              "array": [
+                "pubkey",
+                5
+              ]
+            }
+          },
+          {
+            "name": "total_bet",
+            "type": "u64"
+          },
+          {
+            "name": "player_spawns",
+            "type": {
+              "array": [
+                "u16",
+                5
+              ]
+            }
+          },
+          {
+            "name": "player_kills",
+            "type": {
+              "array": [
+                "u16",
+                5
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

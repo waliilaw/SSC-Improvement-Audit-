@@ -1,0 +1,23 @@
+Phase  	Week	Tasks	KPI
+I: Wager with Phantom	1	Project setup	"Contract developed and deployed in TestNet
+- wager logic
+- basic driver
+Game integration for demo"
+		Smart contract: Wager logic, prize distribution	
+	2	Phantom wallet integration + Game Integration 	Demo
+		Game Session - PDA	
+II: On Ramp and Social Login	3	Social login integration	Users must be able to login with Meta, X, Google, Apple
+	4-5	Wallet creation & management	Backend setup
+		Key encryption/storage	
+	6	Guardian API integration	
+		OnRamp Payment flow implementation	
+		Off Ramp Withdrawal system	
+	7	Transaction monitoring	
+		Integration testing	
+III: SDK Development	8-11	SDK development 	
+		Test case validations	
+		Developer documentation	
+IV: SDK Development	12	Dashboard for Game Dev	
+	13-14	Security review	
+		Integration testing	
+		Final documentation	
